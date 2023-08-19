@@ -29,14 +29,18 @@
         </div>
     </header>
     <section id="contact" class="section contact-section">
+        
         <div class="container">
-            <h2>Contact</h2>
+            <div class="container">
+                <!-- Logo și meniu ... -->
+                <h1 id="contact-heading" class="contact-heading">Contact</h1>
+            </div>
             <address>
                 <p>Adresa: Str. Principală, Nr. 123, Orașul Nostru</p>
                 <p>Telefon: 123-456-7890</p>
                 <p>Email: contact@gimnaziulnostru.ro</p>
             </address>
-            <form class="contact-form" action="http://localhost/proiect/process.php" method="post">
+            <form class="contact-form" action="process.php" method="post">
                 <label for="nume">Nume:</label>
                 <input type="text" id="nume" name="nume" required>
             
@@ -47,19 +51,25 @@
                 <textarea id="mesaj" name="mesaj" rows="4" required></textarea>
             
                 <button type="submit">Trimite</button>
+                <div id="message"></div>
             </form>
         </div>
     </section>
     <footer>
-        <div class="container">
+        
+            <div class="designed-by">
+                <p>®Designed by Adrian</p>
+            </div>
             <p>&copy; 2023 Gimnaziul Vasile Alecsandri din Taraclia de Salcie. Toate drepturile rezervate.</p>
         </div>
+        
         <div class="social-bar">
             <a href="https://www.facebook.com/100075368397641" class="social-icon"><img src="facebook.png" alt="Facebook"></a>
             <a href="https://twitter.com/pagina-dvs" class="social-icon"><img src="youtube.png" alt="Youtube"></a>
             <a href="https://www.instagram.com/pagina-dvs" class="social-icon"><img src="instagram.png" alt="Instagram"></a>
             <!-- Adăugați alte butoane sociale aici -->
         </div>
+      
     </footer>
     <script>
         const navbarToggle = document.getElementById('navbarToggle');
@@ -95,7 +105,28 @@
             const opacity = Math.max(maxOpacity - (currentScroll / threshold), minOpacity);
             navbar.style.backgroundColor = `rgba(0, 0, 0, ${opacity})`;
         });
-        
+        document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('.contact-form');
+    const messageDiv = document.getElementById('message');
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const formData = new FormData(form);
+        const xhr = new XMLHttpRequest();
+
+        xhr.open('POST', 'process.php', true);
+        xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                messageDiv.innerHTML = xhr.responseText;
+            }
+        };
+
+        xhr.send(formData);
+    });
+});
     </script>
 </body>
 </html>
