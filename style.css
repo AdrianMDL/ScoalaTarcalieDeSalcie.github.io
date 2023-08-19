@@ -147,7 +147,7 @@ footer {
 }
 
 /* Stilizare meniu responsiv */
-@media (max-width: 768px) {
+@media (max-width: 368px) {
     .navbar {
         flex-direction: column;
         align-items: center;
@@ -159,7 +159,7 @@ footer {
     }
 
     .navbar-menu {
-        display: none;
+        display: flex;
         flex-direction: column;
         background-color: #9a08de;
         position: absolute;
@@ -285,55 +285,171 @@ header img:hover {
 }
 /* Stilizare pentru formularul de contact */
 /* Stilizare formular de contact */
-.contact-section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 80vh;
-}
-
-.contact-form {
-    max-width: 400px;
-    width: 100%;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 15px;
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
-}
-
-.contact-form label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
+/* Stilizare câmpuri de formular */
 .contact-form input[type="text"],
 .contact-form input[type="email"],
 .contact-form textarea {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
+    padding: 15px;
+    margin-bottom: 20px;
     border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 14px;
-}
-
-.contact-form textarea {
-    resize: vertical;
-}
-
-.contact-form button[type="submit"] {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     font-size: 16px;
+    transition: border-color 0.3s, box-shadow 0.3s; /* Adăugăm efecte de tranziție */
+}
+
+/* Stilizare câmpuri la focus */
+.contact-form input[type="text"]:focus,
+.contact-form input[type="email"]:focus,
+.contact-form textarea:focus {
+    border-color: #9a08de;
+    box-shadow: 0px 0px 10px rgba(154, 8, 222, 0.5); /* Adăugăm o umbră mai subțire la focus */
+}
+
+/* Stilizare etichetă pentru câmpul de formular */
+.contact-form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #6c3d99;
+    transition: color 0.3s; /* Adăugăm efect de tranziție pentru culoare */
+}
+
+/* Stilizare etichetă la focus */
+.contact-form input[type="text"]:focus + label,
+.contact-form input[type="email"]:focus + label,
+.contact-form textarea:focus + label {
+    color: #9a08de;
+}
+
+/* Stilizare text sugestiv pentru câmpurile de formular */
+.contact-form input[type="text"]:focus + label::after,
+.contact-form input[type="email"]:focus + label::after,
+.contact-form textarea:focus + label::after {
+   
+    display: block;
+    color: #999;
+    font-size: 14px;
+    margin-top: 5px;
+    transition: font-size 0.3s; /* Adăugăm efect de tranziție pentru dimensiunea fontului */
+}
+
+/* Mărirea fontului textului sugestiv la focus */
+.contact-form input[type="text"]:focus + label::after,
+.contact-form input[type="email"]:focus + label::after,
+.contact-form textarea:focus + label::after {
+    font-size: 12px;
+}
+/* Stilizare buton de trimitere */
+.contact-form button[type="submit"] {
+    background-color: #6c3d99;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
     cursor: pointer;
     transition: background-color 0.3s;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.7);
 }
 
+/* Stilizare buton la hover */
 .contact-form button[type="submit"]:hover {
-    background-color: #8600b3;
+    background-color: #14f32e;
+    transform: translateY(-2px); /* Ușoară ridicare la hover */
+}
+.contact-heading {
+    font-size: 50px;
+    text-align: center;
+    font-weight: Arial;
+    position: relative;
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+    color: #6c3d99; 
 }
 
+.contact-heading::before {
+    content: 'Ești gata să ne Contactezi?';
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.contact-heading:hover {
+    color: #f881e4;
+}
+
+.contact-heading:hover::before {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Alt stil pentru butoanele sociale */
+.social-icon img {
+    width: 4vw;
+    height: auto;
+    margin: 0 10px;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.social-icon img:hover {
+    transform: scale(1.1);
+    filter: brightness(1.2);
+}
+.designed-by{
+    font-weight: bold;
+    font-style: italic;
+    font-size: 10px;
+    color: #999;
+    opacity: 40%;
+}
+@media (max-width: 768px) {
+    /* ... stiluri pentru meniu responsiv ... */
+}
+
+/* Stilizare text */
+/* ... stilurile existente pentru text ... */
+
+/* Stilizare fundal pagină Acasă pentru telefon */
+@media (max-width: 768px) {
+    #acasa {
+        padding: 15vh 0; /* Ajustați paddingul pentru a menține aspectul */
+    }
+}
+
+/* Stilizare formular de contact pentru telefon */
+@media (max-width: 768px) {
+    .contact-form input[type="text"],
+    .contact-form input[type="email"],
+    .contact-form textarea {
+        padding: 10px;
+        margin-bottom: 15px;
+    }
+
+    .contact-form button[type="submit"] {
+        padding: 12px 25px;
+        font-size: 16px;
+    }
+
+    .contact-heading {
+        font-size: 30px;
+    }
+}
+
+/* ... restul stilurilor ... */
+
+/* Stilizare secțiune contact pentru telefon */
+@media (max-width: 768px) {
+    .contact-section::before,
+    .contact-section::after {
+        height: 5px; /* Înălțimea border-ului */
+    }
+}
